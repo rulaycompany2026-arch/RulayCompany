@@ -1,0 +1,14 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+Options +FollowSymlinks
+
+## Reglas basicas
+RewriteCond %{REQUEST_URI} !maintenance.html$
+RewriteCond %{REQUEST_URI} !^.*(\.js|\.gif|\.jpg|\.png|\.css)$
+
+## IP Publica para poder acceder
+RewriteCond %{REMOTE_ADDR} !^60\.31\.50\.29
+
+RewriteRule .* /maintenance.html [R=302,L,QSD]
+</IfModule>
+
